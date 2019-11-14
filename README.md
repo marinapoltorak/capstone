@@ -14,7 +14,6 @@ The user will have several fields: user name, password, e-mail address, preferen
 Preferences will have the following fields: minority status, geographical location, field of study, degree, availability for speaking engagements.
 
 ## Schedule 
-Week One:
   Set up Django App structure
   Use Axios, Ajax and JSon to query API
   Use HTML, CSS and Materialize to style and present the Data
