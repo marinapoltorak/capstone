@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1>this is the index</h1>
-  </body>
-</html>
+{% extends "wisapp/base.html" %}
+
+
+{% block title %}{{ scientist.sci_name }}{% endblock %}
+{% block content %}
+
+<header>
+</header>
+<main>
+  <div class="name">
+    {{ scientist.sci_field }}
+  </div>
+  <div class="big_stuff">
+    {{ scientist.sci_big_stuff }}
+  </div>
+  <div class="image">
+    <img src="{{ scientist.sci_image.url }}" alt="" width=300px>
+  </div>
+</main>
+<div class="bio">
+  {{ scientist.sci_bio }}
+</div>
+
+{% endblock %}

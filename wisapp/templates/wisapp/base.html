@@ -1,53 +1,118 @@
+
 {% load static %}
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>{% block title %}Women in Science{% endblock %}</title>
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<head>
+  <meta charset="utf-8">
+  <title>Women in Science</title>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="{%  static 'todoapp/style.css' %}">
-  </head>
-  <body>
-    <!-- <ul id="slide-out" class="sidenav">
-        <li><a href="{% url 'wisapp:index' %}"><i class="material-icons">home</i></a></li>
-        <li>
-            <div class="divider"></div>
-        <li>
-            <a>© 2019 — HBAM International</a>
-        </li>
-    </ul>
-    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a> -->
+  <style type="text/css">
 
-    <header>
-      <h1>My Site</h1>
-      {% if user.is_authenticated %}
-      <a href="{% url 'logout' %}">logout</a>
-      {% else %}
-      <a href="{% url 'login' %}"></a> / <a href="{% url 'signup' %}">signup</a>
-      {% endif %}
-      <hr>
-    </header>
-    <main>
-      {% block content %}
-      {% endblock %}
-    </main>
+  html {
+    background-image: url("{% static 'wisapp/tile.jpg' %}");
 
-    <!-- <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function() {
-            var elems_nav = document.querySelectorAll('.sidenav');
-            var instances_nav = M.Sidenav.init(elems_nav, {});
-            var elems_select = document.querySelectorAll('select');
-            var instances_select = M.FormSelect.init(elems_select, {});
-        });
-    </script> -->
+  }
+  body {
+    max-width: 800px;
+    min-height: 100vh;
+    padding: 2px;
+    display: flex;
+    background-color: #95e4e8;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
 
-  </body>
+  .name {
+    font-size: 30px;
+    padding: 5px;
+    margin: 5px;
+    color: black;
+  }
+
+  main {
+    min-width: 1000px;
+    max-width: 1500px;
+    min-height: 65vh;
+    padding-right: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    font-family: sans-serif;
+    background-color: #bfa85c;
+    flex: 1 0 auto;
+  }
+
+
+  .big_stuff {
+    font-size:20px;
+    border-radius: 100%;
+    padding: 50px;
+    margin: 4px 4px;
+    background-color: #4a3e3d;
+    color: #bfa85c;
+    font-weight: bolder;
+    align-items: center;
+  }
+
+  .image {
+    justify-content: flex-end;
+  }
+
+  .bio {
+    font-size: 20px;
+    max-width: 1800px;
+    min-width: 100vh;
+    padding: 20px;
+  }
+
+  a.brand-logo {
+    color: black;
+    padding-left: 30px;
+  }
+
+  a.sidenav-trigger {
+    color: black;
+  }
+
+  nav {
+    background-color: #95e4e8;
+  }
+
+  #slide-out {
+    background-color: lemonchiffon;
+  }
+
+</style>
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">{% block title %}{% endblock %}</a>
+      <ul id="slide-out" class="sidenav">
+        <li><a onclick="window.location.reload()">Get Another Scientist</a></li>
+        <li><a href="{{ scientist.sci_link }}">More About {{ scientist.sci_name }}</a></li>
+      </ul>
+      <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large right"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+    {% block content %}
+    {% endblock %}
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems, {});
+    });
+  </script>
+</body>
 </html>
