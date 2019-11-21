@@ -1,0 +1,22 @@
+{% extends "wisapp/base.html" %}
+
+
+{% block title %}Add a Scientist{% endblock %}
+{% block content %}
+<header>
+</header>
+<main>
+  <div id="app">
+    <h1>Scientist</h1>
+    <form>
+      <input type="text" name="sci_name" placeholder="Scientist's Name"/>
+      <input type="text" name="sci_field" placeholder="Scientist's Field"/>
+      <textarea class="materialize-textarea" name="sci_bio" placeholder="Short Bio"></textarea>
+      <textarea name="sci_big_stuff" class="materialize-textarea" placeholder="Single Accomplishment"></textarea>
+      <input type="url" name="sci_link" placeholder="Scientist's Link">
+      <input type="file" name="sci_image" value="">
+      <button class="btn">Add A Scientist</button>
+    </form>
+  </div>
+</main>
+{% endblock %}

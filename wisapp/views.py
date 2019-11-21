@@ -6,8 +6,12 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 import random
+import json
 
-def signup(request):
+def index(request):
+    return render(request, 'wisapp/index.html')
+
+def display(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -21,58 +25,51 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'signup.html',{ 'form':form })
 
-def index(request):
-    scientists = Scientist.objects.all().order_by('sci_name')
-    scientist = random.choice(scientists)
-    context = {
-        'scientist': scientist,
+
+def get_a_scientist(request):
+
+    db_scientist = random.choice(Scientist.objects.all())
+    image = db_scientist.sci_image.url
+    bio = db_scientist.sci_bio
+    name = db_scientist.sci_name
+    big_stuff = db_scientist.sci_big_stuff
+    sci_field = db_scientist.sci_field
+    scientist = {
+        'image': image,
+        'bio': bio,
+        'name': name,
+        'big_stuff': big_stuff,
+        'sci_field' : sci_field,
     }
-    return render(request, 'wisapp/index.html', context)
+    return JsonResponse(scientist)
 
-# @login_required
-# def save_scientist(request):
-#     print(request.POST)
-#     user = request.user
-#     sci_image = request.POST['sci_image']
-#     sci_name = request.POST['sci_name']
-#     sci_bio = request.POST['sci_bio']
-#
-#     scientist = Scientist(user=user, sci_image=sci_image, sci_name=sci_name, sci_bio=sci_bio)
-#     scientist.save()
-#
-#     return HttpResponseRedirect(reverse('wisapp:index'))
+    # db_scientists = Scientist.objects.order_by('sci_name')
+    # scientists = []
+    # for db_scientist in db_scientists:
+    #     image = db_scientist.sci_image.url
+    #     bio = db_scientist.sci_bio
+    #     name = db_scientist.sci_name
+    #     big_stuff = db_scientist.sci_big_stuff
+    #     sci_field = db_scientist.sci_field
+    #     scientists.append({
+    #         'image': image,
+    #         'bio': bio,
+    #         'name': name,
+    #         'big_stuff': big_stuff,
+    #         'sci_field' : sci_field,
+    #     })
+    # return JsonResponse({'scientists': scientists})
 
-# @login_required
-# def get_a_scientist(request):
-#     db_scientists = Scientist.objects.order_by('sci_name')
-#     scientists = []
-#     for db_scientist in db_scientists:
-#         image = db_scientist.sci_image.url
-#         bio = db_scientist.sci_bio
-#         name = db_scientist.sci_name
-#         big_stuff = db_scientist.sci_big_stuff
-#         sci_field = db_scientist.sci_field
-#         scientists.append({
-#             'image': image,
-#             'bio': bio,
-#             'name': name,
-#             'big_stuff': big_stuff,
-#             'sci_field' : sci_field,
-#         })
-#
-#     return JsonResponse({'scientists': scientists})
+def save_a_scientist(request):
+    data = json.loads(request.body)
+    image = data['image']
+    bio = data['bio']
+    name = ['name']
+    big_stuff = ['big_stuff']
+    sci_field = ['sci_field']
+    user = request.user
 
-# @login_required
-# def save_a_scientist_ajax(request):
-#     data = json.loads(request.body)
-#     image = data['image']
-#     bio = data['bio']
-#     name = ['name']
-#     big_stuff = ['big_stuff']
-#     sci_field = ['sci_field']
-#     user = request.user
-#
-#     scientist = Scientist(user=user, image=image, sci_name=sci_name, sci_bio=sci_bi, )
-#     scientist.save()
-#
-#     return HttpResponse('ok')
+    scientist = Scientist(user=user, image=image, name=name, bio=bio, )
+    scientist.save()
+
+    return JsonResponse({'scientists': scientists })

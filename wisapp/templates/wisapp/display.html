@@ -5,11 +5,11 @@
 <div class="main">
   <h1>Want to see a female scientist?</h1>
   <div class="row">
-    <form class="col s12" action="{% url 'wisapp:new_todo' %}" method="post" enctype="multipart/form-data">
+    <form class="col s12" action="{% url 'wisapp:display' %}" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="row">
         <div class="input-field col s12">
-          <input type="text" id="new_text" name="new_text">
+          <input type="text" id="user" name="new_text">
           <label for="new_text">Text</label>
         </div>
         <div class="input-field inline col s6">

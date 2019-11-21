@@ -3,22 +3,56 @@
 
 {% block title %}{{ scientist.sci_name }}{% endblock %}
 {% block content %}
-
 <header>
 </header>
-<main>
-  <div class="name">
-    {{ scientist.sci_field }}
+  <div id="app">
+    <nav>
+      [[scientist.name]]
+    </nav>
+    <main>
+      <div class="field">[[scientist.sci_field]]</div>
+      <div class="big_stuff">[[scientist.big_stuff]]</div>
+      <div class="image">
+        <img v-bind:src="scientist.image"/>
+    </main>
+    <div class="bio">
+      [[scientist.bio]]
+    </div>
   </div>
-  <div class="big_stuff">
-    {{ scientist.sci_big_stuff }}
-  </div>
-  <div class="image">
-    <img src="{{ scientist.sci_image.url }}" alt="" width=300px>
-  </div>
-</main>
-<div class="bio">
-  {{ scientist.sci_bio }}
-</div>
+
+
+
+
+<script type="text/javascript">
+  let app = new Vue({
+    el: '#app',
+    delimiters: ['[[', ']]'],
+    data: {
+      scientist: {
+        name: '',
+        field: '',
+        bio: '',
+        big_stuff: '',
+        image: '',
+        link: '',
+      },
+    },
+    methods: {
+      getScientist: function() {
+        axios({
+          url: '{% url 'wisapp:get_a_scientist' %}',
+          method: 'get'
+        }).then(response => {
+          // this.items = response.data.items
+          console.log(response.data)
+          this.scientist = response.data
+        })
+      }
+    },
+    created: function() {
+      this.getScientist()
+    }
+  })
+</script>
 
 {% endblock %}
