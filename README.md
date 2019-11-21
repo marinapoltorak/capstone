@@ -29,6 +29,6 @@ Will have the following **fields**:
   3. [ ] Set up Django App structure
   4. [ ] Create user CRUD
   5. [ ] Employ Axios, Ajax and JSon to query API
-  6. [ ] Use Python to randomize the selected data
+  6. [x ] Use Python to randomize the selected data
   7. [ ] Use HTML, CSS and Materialize to style and present the data
   8. [ ] Create a Chrome extension to offer up a different scientist when user goes to a new tab.

@@ -5,6 +5,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Women in Science</title>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -36,6 +37,7 @@
     padding: 5px;
     margin: 5px;
     color: black;
+    flex-direction: column;
   }
 
   main {
@@ -51,6 +53,15 @@
     font-family: sans-serif;
     background-color: #bfa85c;
     flex: 1 0 auto;
+  }
+  @media (max-width: 800px) {
+    main {
+      flex-direction:column;
+      min-width: 400px;
+    }
+    body {
+      min-width: 200px;
+    }
   }
 
 
@@ -88,6 +99,7 @@
   nav {
     background-color: #95e4e8;
     padding-top: 20px 0 20px 0;
+    flex-direction:column;
   }
 
   #slide-out {
