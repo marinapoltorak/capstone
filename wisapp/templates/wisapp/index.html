@@ -8,12 +8,13 @@
       <body>
         <nav>
           <div class="nav-wrapper">
-            <a href="#" class="brand-logo"> Fatima's House </a>
+            <a href="#" class="brand-logo">RIBAT FATIMA</a>
             <ul id="slide-out" class="sidenav">
               <li><a onclick="window.location.reload()">Get Another Scientist</a></li>
-              <li><a href="[[scientist.link]]">More About [[scientist.name]]</a></li>
+              <li><a href v-bind:href="scientist.link">More About
+                 [[scientist.name]]</a></li>
             </ul>
-            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large right"><i class="material-icons">menu</i></a>
+            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large right">More Options</a>
           </div>
         </nav>
         <div class="name_and_field">
