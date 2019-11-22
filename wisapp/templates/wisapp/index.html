@@ -3,22 +3,25 @@
 
 {% block title %}{{ scientist.sci_name }}{% endblock %}
 {% block content %}
-<header>
-</header>
   <div id="app">
-    <nav>
-      [[scientist.name]]
-    </nav>
-    <main>
-      <div class="field">[[scientist.sci_field]]</div>
-      <div class="big_stuff">[[scientist.big_stuff]]</div>
-      <div class="image">
-        <img v-bind:src="scientist.image"/>
-    </main>
-    <div class="bio">
-      [[scientist.bio]]
-    </div>
-  </div>
+    <html>
+      <body>
+        <nav>
+          <a href=""><div class="name">
+            [[scientist.name]]
+          </div></a><div class=nav-logo></div>
+        </nav>
+        <main>
+          <div class="field">[[scientist.sci_field]]</div>
+          <div class="big_stuff">[[scientist.big_stuff]]</div>
+          <div class="image">
+            <img v-bind:src="scientist.image"/>
+        </main>
+        <div class="bio">
+          [[scientist.bio]]
+        </div>
+      </body>
+    </html>
 
 
 
