@@ -34,12 +34,14 @@ def get_a_scientist(request):
     name = db_scientist.sci_name
     big_stuff = db_scientist.sci_big_stuff
     sci_field = db_scientist.sci_field
+    link = db_scientist.sci_link
     scientist = {
         'image': image,
         'bio': bio,
         'name': name,
         'big_stuff': big_stuff,
-        'sci_field' : sci_field,
+        'sci_field': sci_field,
+        'link': link,
     }
     return JsonResponse(scientist)
 
@@ -67,9 +69,10 @@ def save_a_scientist(request):
     name = ['name']
     big_stuff = ['big_stuff']
     sci_field = ['sci_field']
+    link = data['link']
     user = request.user
 
-    scientist = Scientist(user=user, image=image, name=name, bio=bio, )
+    scientist = Scientist(user=user, image=image, name=name, bio=bio, big_stuff=big_stuff, sci_field=sci_field, link=link, )
     scientist.save()
 
     return JsonResponse({'scientists': scientists })

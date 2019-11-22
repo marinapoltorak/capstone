@@ -7,21 +7,34 @@
     <html>
       <body>
         <nav>
-          <a href=""><div class="name">
-            [[scientist.name]]
-          </div></a><div class=nav-logo></div>
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo"> Fatima's House </a>
+            <ul id="slide-out" class="sidenav">
+              <li><a onclick="window.location.reload()">Get Another Scientist</a></li>
+              <li><a href="[[scientist.link]]">More About [[scientist.name]]</a></li>
+            </ul>
+            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large right"><i class="material-icons">menu</i></a>
+          </div>
         </nav>
+        <div class="name_and_field">
+          <div class="name">
+            [[scientist.name]]
+          </div>
+          <div class="field">
+            [[scientist.sci_field]]
+          </div>
+        </div>
         <main>
-          <div class="field">[[scientist.sci_field]]</div>
           <div class="big_stuff">[[scientist.big_stuff]]</div>
           <div class="image">
-            <img v-bind:src="scientist.image"/>
+            <img v-bind:src="scientist.image" width="400px"/>
         </main>
         <div class="bio">
           [[scientist.bio]]
         </div>
       </body>
     </html>
+    </div>
 
 
 
@@ -56,6 +69,10 @@
       this.getScientist()
     }
   })
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems, {});
+    });
 </script>
 
 {% endblock %}
