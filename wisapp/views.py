@@ -11,6 +11,9 @@ import json
 def index(request):
     return render(request, 'wisapp/index.html')
 
+def get_all(request):
+    return render(request, 'wisapp/get_all.html')
+
 def display(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -45,22 +48,6 @@ def get_a_scientist(request):
     }
     return JsonResponse(scientist)
 
-    # db_scientists = Scientist.objects.order_by('sci_name')
-    # scientists = []
-    # for db_scientist in db_scientists:
-    #     image = db_scientist.sci_image.url
-    #     bio = db_scientist.sci_bio
-    #     name = db_scientist.sci_name
-    #     big_stuff = db_scientist.sci_big_stuff
-    #     sci_field = db_scientist.sci_field
-    #     scientists.append({
-    #         'image': image,
-    #         'bio': bio,
-    #         'name': name,
-    #         'big_stuff': big_stuff,
-    #         'sci_field' : sci_field,
-    #     })
-    # return JsonResponse({'scientists': scientists})
 
 def save_a_scientist(request):
     data = json.loads(request.body)
