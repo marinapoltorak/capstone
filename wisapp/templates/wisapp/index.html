@@ -11,26 +11,26 @@
             <ul id="slide-out" class="sidenav">
               <li><a onclick="window.location.reload()">Get Another Scientist</a></li>
               <li><a href v-bind:href="scientist.link">More About
-                 [[scientist.name]]</a></li>
+                 [[scientist.sci_name]]</a></li>
             </ul>
             <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large right">More Options</a>
           </div>
         </nav>
         <div class="name_and_field">
           <div class="name">
-            [[scientist.name]]
+            [[scientist.sci_name]]
           </div>
           <div class="field">
             [[scientist.sci_field]]
           </div>
         </div>
         <main>
-          <div class="big_stuff">[[scientist.big_stuff]]</div>
+          <div class="big_stuff">[[scientist.sci_big_stuff]]</div>
           <div class="image">
             <img v-bind:src="scientist.image" width="400px"/>
         </main>
         <div class="bio">
-          [[scientist.bio]]
+          [[scientist.sci_bio]]
         </div>
       </body>
     </html>
@@ -45,7 +45,7 @@
     delimiters: ['[[', ']]'],
     data: {
       scientist: {
-        name: '',
+        sci_name: '',
         field: '',
         bio: '',
         big_stuff: '',
@@ -56,12 +56,13 @@
     methods: {
       getScientist: function() {
         axios({
-          url: '{% url 'wisapp:get_a_scientist' %}',
+          url: '{% url 'wisapp:get_scientist' %}',
           method: 'get'
         }).then(response => {
           // this.items = response.data.items
           console.log(response.data)
           this.scientist = response.data
+          console.log(this.scientist)
         })
       }
     },

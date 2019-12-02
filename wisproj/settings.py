@@ -25,7 +25,7 @@ SECRET_KEY = '(j4m+)sx&iczk@l-kxb48j#*g#18b-9kb^meyk&sx=#opcpl2b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -38,9 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'wisapp',
+    'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -121,3 +124,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/uploaded_files/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploaded_files')
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "*",
+]
