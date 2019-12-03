@@ -2,44 +2,51 @@
 
 {% block title %}{{ scientist.sci_name }}{% endblock %}
 {% block content %}
-  <div id="app">
-    <html>
-      <body>
-        <nav>
-          <div class="nav-wrapper">
-            <a href="#" class="brand-logo">RIBAT FATIMA</a>
-            <ul id="slide-out" class="sidenav">
-              <li><a onclick="window.location.reload()">Get Another Scientist</a></li>
-              <li><a href v-bind:href="scientist.link">More About
-                 [[scientist.sci_name]]</a></li>
-            </ul>
-            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large right">More Options</a>
-          </div>
-        </nav>
-        <div class="name_and_field">
-          <div class="name">
-            [[scientist.sci_name]]
-          </div>
-          <div class="field">
-            [[scientist.sci_field]]
-          </div>
-        </div>
+
+<div id="app">
+  <nav>
+    <a href="#" class="brand-logo show-on-large center" >WOMEN IN SCIENCE</a>
+  </nav>
+    <slider :width="600" format="push" direction="left" :opacity="0.15" :links="[
+    {'id': 1, 'text': 'More Information about this scientist', 'url': scientist.sci_link},
+    {'id': 2, 'text': 'Association For Women In Science', 'url': 'https://www.awis.org/'},
+    {'id': 3, 'text': 'List of Women Scientist, 21st Century', 'url': 'https://en.wikipedia.org/wiki/List_of_female_scientists_in_the_21st_century'},
+    {'id': 4, 'text': 'List of Female Scientists Before the 20th Century', 'url': 'https://en.wikipedia.org/wiki/List_of_female_scientists_before_the_20th_century'},
+    {'id': 5, 'text': 'Timeline of Women in Science', 'url': 'https://en.wikipedia.org/wiki/Timeline_of_women_in_science'},
+    {'id': 6, 'text': 'Marina Poltorak', 'url': 'https://github.com/marinapoltorak'},
+    ]">
+    </slider>
+      <!-- <li>
+        <button type="button" name="button" class="btn"><a href v-bind:href="scientist.sci_link">More About
+         [[scientist.sci_name]]</a>
+        </button>
+      </li> -->
+    <!-- <button type="button" name="button" class="sidenav-trigger show-on-large right" data-target="slide-out"><a href="#" data-target="slide-out">More Options</a></button> -->
+
+    <div class="reload">
+      <a v-on:click="getScientist()"><i class="material-icons">refresh</i></a>
+    </div>
         <main>
-          <div class="big_stuff">[[scientist.sci_big_stuff]]</div>
-          <div class="image">
-            <img v-bind:src="scientist.image" width="400px"/>
-        </main>
+          <div class="name_and_field">
+            <div class="name">
+              [[scientist.sci_name]]
+            </div>
+            <div class="field">
+              [[scientist.sci_field]]
+            </div>
+          </div>
+          <div style="text-align:center">
+            <img v-bind:src="'http://localhost:8000' + scientist.sci_image"/>
+            <div class="big_stuff valign-wrapper"> [[scientist.sci_big_stuff]]</div>
+          </div>
+          <hr>
         <div class="bio">
           [[scientist.sci_bio]]
         </div>
-      </body>
-    </html>
-    </div>
-
-
-
-
+      </main>
+</div>
 <script type="text/javascript">
+
   let app = new Vue({
     el: '#app',
     delimiters: ['[[', ']]'],
@@ -70,10 +77,13 @@
       this.getScientist()
     }
   })
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.sidenav');
-      var instances = M.Sidenav.init(elems, {});
-    });
+
+
+
+    // document.addEventListener('DOMContentLoaded', function() {
+    //   var elems = document.querySelectorAll('.sidenav');
+    //   var instances = M.Sidenav.init(elems, {});
+    // });
 </script>
 
 {% endblock %}

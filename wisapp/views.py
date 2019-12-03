@@ -6,6 +6,8 @@ from .models import Scientist
 from .serializers import ScientistSerializer
 from django.shortcuts import render
 
+
+
 def index(request):
     return render(request, 'wisapp/index.html')
 
