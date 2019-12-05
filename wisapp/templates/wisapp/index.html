@@ -3,29 +3,22 @@
 {% block title %}{{ scientist.sci_name }}{% endblock %}
 {% block content %}
 
-<div id="app">
-  <nav>
-    <a href="#" class="brand-logo show-on-large center" >WOMEN IN SCIENCE</a>
-  </nav>
-    <slider :width="600" format="push" direction="left" :opacity="0.15" :links="[
-    {'id': 1, 'text': 'More Information about this scientist', 'url': scientist.sci_link},
-    {'id': 2, 'text': 'Association For Women In Science', 'url': 'https://www.awis.org/'},
-    {'id': 3, 'text': 'List of Women Scientist, 21st Century', 'url': 'https://en.wikipedia.org/wiki/List_of_female_scientists_in_the_21st_century'},
-    {'id': 4, 'text': 'List of Female Scientists Before the 20th Century', 'url': 'https://en.wikipedia.org/wiki/List_of_female_scientists_before_the_20th_century'},
-    {'id': 5, 'text': 'Timeline of Women in Science', 'url': 'https://en.wikipedia.org/wiki/Timeline_of_women_in_science'},
-    {'id': 6, 'text': 'Marina Poltorak', 'url': 'https://github.com/marinapoltorak'},
-    ]">
-    </slider>
-      <!-- <li>
-        <button type="button" name="button" class="btn"><a href v-bind:href="scientist.sci_link">More About
-         [[scientist.sci_name]]</a>
-        </button>
-      </li> -->
-    <!-- <button type="button" name="button" class="sidenav-trigger show-on-large right" data-target="slide-out"><a href="#" data-target="slide-out">More Options</a></button> -->
-
-    <div class="reload">
-      <a v-on:click="getScientist()"><i class="material-icons">refresh</i></a>
-    </div>
+<html>
+  <div id="app">
+      <nav>
+        <a href="#" class="brand-logo show-on-large center" >WOMEN IN SCIENCE</a>
+      <ul id="slide-out" class="sidenav">
+        <li>
+          <a href v-bind:href="scientist.sci_link">More About
+           [[scientist.sci_name]]</a>
+        </li>
+        <a href="{% url 'add' %}">Add A Scientist</a>
+      </ul>
+      <div class="reload">
+          <a v-on:click="getScientist()"><i class="material-icons">refresh</i></a>
+      </div>
+      <a href="#" class="sidenav-trigger show-on-large right" data-target="slide-out" data-target="slide-out"><i class="material-icons">menu</i></a>
+      </nav>
         <main>
           <div class="name_and_field">
             <div class="name">
@@ -44,7 +37,8 @@
           [[scientist.sci_bio]]
         </div>
       </main>
-</div>
+    </div>
+</html>
 <script type="text/javascript">
 
   let app = new Vue({
@@ -77,13 +71,10 @@
       this.getScientist()
     }
   })
-
-
-
-    // document.addEventListener('DOMContentLoaded', function() {
-    //   var elems = document.querySelectorAll('.sidenav');
-    //   var instances = M.Sidenav.init(elems, {});
-    // });
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems, {});
+    });
 </script>
 
 {% endblock %}

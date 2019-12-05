@@ -7,10 +7,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Women in Science</title>
-
-  <script src="https://unpkg.com/@jeremyhamm/vue-slider"></script>
-
-
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -27,42 +23,13 @@
 
   <style type="text/css">
 
-    html {
-      background-image: url("{% static 'wisapp/morocco.png'%}");
-      color: #2C3142;
-    }
     #app {
       min-width: 100vw;
       min-height: 100vh;
-      background-image: url("./morocco.png");
+      background-image: url("{% static 'wisapp/morocco.png' %}")!important;
       color: #2C3142;
     }
 
-    .navMenu {
-      background: lemonchiffon !important;
-    }
-
-    .navMenu a {
-      color: #2C3142 !important;
-      font-size: 50px;
-      font-family: 'Chonburi', cursive;
-    }
-
-    .navMenu a:hover {
-      color: #E8988A !important;
-      background-color: rgba(245, 243, 244, 0.67);
-    }
-
-    .material-icons.pointer {
-      cursor: pointer;
-    }
-    .material-icons:hover {
-      cursor: pointer;
-    }
-
-    .navIcon {
-      color: #75576E;
-    }
 
     .bio {
       font-size: 20px;
@@ -76,8 +43,8 @@
       flex-direction: row;
       justify-content: space-evenly;
       align-content: flex-end;
-      font-size: 35px;
-      font-family: 'Chonburi', cursive;
+      font-size: 30px;
+      font-family: 'Chonburi' ,cursive;
     }
 
     .field {
@@ -85,7 +52,19 @@
       font-style: italic;
     }
 
-
+    a.brand-logo {
+      color: #2C3142 !important;
+      font-size: 35px;
+      font-family: 'Sulphur Point';
+      margin: auto;
+      padding: 20px 20px;
+      /* background-color: rgba(245, 243, 244, 0.67); */
+      flex: 1 0 auto;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+    }
     main {
       display: flex;
       flex-direction: column;
@@ -98,27 +77,46 @@
       flex: 1 0 auto;
     }
 
-    .loading-page {
-      font-family: 'Vast Shadow', cursive;
-      font-size: 75px;
+    i.material-icons {
+      font-weight: bold;
+      color: #75576E;
+      cursor: pointer !important;
+      user-select: none;
     }
+
+    .sidenav li>a {
+      color: #e9e6ed;
+      font-weight: bolder;
+      font-family: 'Sulphur Point', sans-serif;
+      font-size: 15px;
+    }
+
+    .sidenav li>a:hover {
+      color: black;
+      background-color: rgba(245, 243, 244, 0.35);
+    }
+    .navIcon {
+      color: #75576E;
+      font-weight: bold;
+      padding-right: 0px;
+      padding-left:0px;
+    }
+
     @media (max-width: 800px) {
       main  {
         flex-direction:column;
         min-width: 600px;
       }
 
-      .big_stuff {
-        margin: 2px;
-      }
-
       img {
         max-height: 50px;
         max-width: 50px;
       }
+      a.brand-logo {
+        font-size: 25px;
+      }
 
     }
-
 
     .big_stuff {
       font-size:25px;
@@ -130,16 +128,20 @@
       display:flex;
       flex-direction:column;
       font-family: 'Chonburi', cursive;
+      margin: 2px;
     }
 
     nav {
-      background-image: url("../images/stucco.png");
+      background-image: url("{% static 'wisapp/morocco.png' %}");
       display: flex;
       align-items: center;
       flex-direction: row;
       justify-content: space-between;
+      margin: 0px 25px;
+      padding: 5px 20px;
+      background-color: rgba(245, 243, 244, 0.75);
+      flex: 1 0 auto;
     }
-
 
     img {
       max-width:600px;
@@ -150,12 +152,36 @@
       background-color: #625b75;
     }
 
-    nav a {
-      color: #e9e6ed;
-      font-weight: bolder;
-      font-family: 'Sulphur Point', sans-serif;
-      font-size: 20px;
+    i.material-icons {
+      padding: 0px 50px 0px 50px;
     }
+
+    #slide-out {
+    background: #E8988A !important;
+  }
+
+  form {
+    background: grey;
+    padding: 40px;
+  }
+
+  .btn {
+    background: black;
+  }
+
+  .btn:hover {
+    background: grey;
+    color: blue;
+  }
+
+h1 {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0px 25px;
+  padding: 5px 20px;
+}
 
 
 

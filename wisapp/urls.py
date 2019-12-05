@@ -4,6 +4,5 @@ from . import views
 
 app_name = 'wisapp'
 urlpatterns = [
-    path('', views.index, name='index'),
     path('scientist/', views.get_scientist, name='get_scientist'),
 ]
