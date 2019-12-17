@@ -3,42 +3,42 @@
 {% block title %}{{ scientist.sci_name }}{% endblock %}
 {% block content %}
 
-<html>
-  <div id="app">
-      <nav>
-        <a href="#" class="brand-logo show-on-large center" >WOMEN IN SCIENCE</a>
-      <ul id="slide-out" class="sidenav">
-        <li>
-          <a href v-bind:href="scientist.sci_link">More About
-           [[scientist.sci_name]]</a>
-        </li>
-        <a href="{% url 'add' %}">Add A Scientist</a>
-      </ul>
-      <div class="reload">
-          <a v-on:click="getScientist()"><i class="material-icons">refresh</i></a>
-      </div>
-      <a href="#" class="sidenav-trigger show-on-large right" data-target="slide-out" data-target="slide-out"><i class="material-icons">menu</i></a>
-      </nav>
-        <main>
-          <div class="name_and_field">
-            <div class="name">
-              [[scientist.sci_name]]
-            </div>
-            <div class="field">
-              [[scientist.sci_field]]
-            </div>
-          </div>
-          <div style="text-align:center">
-            <img v-bind:src="'http://localhost:8000' + scientist.sci_image"/>
-            <div class="big_stuff valign-wrapper"> [[scientist.sci_big_stuff]]</div>
-          </div>
-          <hr>
-        <div class="bio">
-          [[scientist.sci_bio]]
+
+<div id="app">
+  <nav>
+    <a href="#" class="brand-logo show-on-large center" >WOMEN IN SCIENCE</a>
+  <ul id="slide-out" class="sidenav">
+    <li>
+      <a href v-bind:href="scientist.sci_link">More About
+       [[scientist.sci_name]]</a>
+    </li>
+      <a href="{% url 'add' %}">Add A Scientist</a>
+  </ul>
+  <div class="reload">
+      <a v-on:click="getScientist()"><i class="material-icons">refresh</i></a>
+  </div>
+  <a href="#" class="sidenav-trigger show-on-large right" data-target="slide-out" data-target="slide-out"><i class="material-icons">menu</i></a>
+  </nav>
+    <main>
+      <div class="name_and_field">
+        <div class="name">
+          [[scientist.sci_name]]
         </div>
-      </main>
+        <div class="field">
+          [[scientist.sci_field]]
+        </div>
+      </div>
+      <div style="text-align:center">
+        <img v-bind:src="'http://localhost:8000' + scientist.sci_image"/>
+        <div class="big_stuff valign-wrapper"> [[scientist.sci_big_stuff]]</div>
+      </div>
+      <hr>
+    <div class="bio">
+      [[scientist.sci_bio]]
     </div>
-</html>
+  </main>
+  </div>
+
 <script type="text/javascript">
 
   let app = new Vue({
@@ -60,7 +60,6 @@
           url: '{% url 'wisapp:get_scientist' %}',
           method: 'get'
         }).then(response => {
-          // this.items = response.data.items
           console.log(response.data)
           this.scientist = response.data
           console.log(this.scientist)

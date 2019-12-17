@@ -25,7 +25,6 @@ def add(request):
         scientist.sci_big_stuff = request.POST['sci_big_stuff']
         scientist.sci_field = request.POST['sci_field']
         scientist.sci_link = request.POST['sci_link']
-        # Fill in the rest of the fields
         scientist.save()
 
     return render(request, 'wisapp/add.html')
